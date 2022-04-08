@@ -17,7 +17,7 @@ const products = [{
 {
     id: 3,
     title: 'Shampu',
-    description: 'texto',
+    description: 'skdlksdflksndkdsnvkrdrnvñlsdkasdnfdvflarihia<ñnañefnañeiugbv<-nv ksnciufednf',
     price: 12000,
     pictureUrl:'./imagenes/producto3.jpeg',
 
@@ -30,35 +30,10 @@ const products = [{
     pictureUrl:'./imagenes/producto4.jpeg',
 
 },
-{
-    id: 5,
-    title: 'Cepillo',
-    description: 'texto',
-    price: 5000,
-    pictureUrl:'./imagenes/producto4.jpeg',
-
-},
-{
-    id: 6,
-    title: 'Cepillo',
-    description: 'texto',
-    price: 5000,
-    pictureUrl:'./imagenes/producto4.jpeg',
-
-},
-{
-    id: 7,
-    title: 'Cepillo',
-    description: 'texto',
-    price: 5000,
-    pictureUrl:'./imagenes/producto4.jpeg',
-
-},
 
 
 ]
-
-const getProducts = () =>{
+export const getProducts = () =>{
     return new Promise (resolve =>{
         setTimeout(()=>{
             resolve(products)
@@ -66,4 +41,11 @@ const getProducts = () =>{
     })
 }
 
-export default getProducts
+export const getProductsById = (props) =>{
+    return new Promise (resolve =>{
+        setTimeout(()=>{
+            resolve(products.find(prod => prod.id === props))
+        }, 2000)
+    })
+}
+

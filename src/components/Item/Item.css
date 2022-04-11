@@ -14,7 +14,7 @@
     border: solid 3px rgba(0, 0, 0, 0.322);
     border-bottom-width: thin;
     display: grid;
-    grid-template-rows: 60% 30% 10%;
+    grid-template-rows: 60% 20% 20%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .imgCard{
@@ -23,4 +23,16 @@
 }
 .titulo{
     color: black;
+}
+.btn1{
+    width: 150px;
+    height: 50px;
+  background-color: rgb(130, 163, 135);
+  text-decoration: none;
+  text-align: center;
+  color: #192c1b;
+  border: 2px solid rgb(15, 13, 13);
+  border-radius: 12px;
+  padding: 10px;
+  margin-left: 60px;
 }

@@ -7,52 +7,19 @@
     height: 60px;
     background-color: #426d46;
     display: grid;
-    grid-template-columns: auto 80% auto;
-  }
-  
-  nav ul {
-    list-style: none;
-    overflow: hidden; /* Limpiamos errores de float */
-    
-  }
-  ul{
-    display: grid;
-    grid-template-columns: 20% 20% 20%;
-  }
-  
-  nav ul li {
-    float: left;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    
-  }
-  
-  nav ul li a {
-    display: block;
-    padding: 20px;
-    color: #fff;
-    text-decoration: none;
-  }
-  a{
-      width: 100px;
-  }
-  
-  nav ul li:hover {
-    background: #3ead47;
+    grid-template-columns: 20% auto auto auto 20%;
+    border: solid 3px rgba(0, 0, 0, 0.322);
+    border-bottom-width: thin;
   }
   .imgNavbar{
       width: 100%;
       height: 62px;
   }
-  p{
-    padding: 0;
-  }
-
  #carro{
    position: relative;
  } 
 #ImagenCarro{
-  width: 50%;
+  width: 30%;
   height: 50px;
 }
 #numeroCarro{
@@ -63,4 +30,18 @@
   position: absolute;
   top:0;
   
+}
+.btnNavBar{
+  width: 150px;
+  background-color: rgb(130, 163, 135);
+  margin: 20px;
+  text-decoration: none;
+  text-align: center;
+  color: #0f0f0f;
+  border: 2px solid rgb(15, 13, 13);
+  border-radius: 12px;
+  padding: 5px;
+}
+.btnNavBar:active{
+  background-color: aqua;
 }

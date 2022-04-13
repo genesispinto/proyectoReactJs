@@ -1,0 +1,24 @@
+#carro{
+    background-color: rgba(221, 250, 59, 0.836);
+    width: 60px;
+    height: 40px;
+    position: relative;
+    margin: 5px;
+    border: solid black 1px;
+    border-radius: 20%;
+    box-shadow: 2px 5px 5px black;
+  } 
+ #ImagenCarro{
+   width: 30px;
+   height: 40px;
+ }
+ #numeroCarro{
+   width: 20%;
+   height: 30px;
+   font-size: larger;
+   color: black;
+   display: inline;
+   position: absolute;
+   /* top:0; */
+   
+ }

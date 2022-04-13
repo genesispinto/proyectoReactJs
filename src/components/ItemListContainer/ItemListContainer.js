@@ -17,7 +17,7 @@ const ItemListContainer = (props)=>{
         }, [categoryId]) 
         
     return(
-        <div className="productos">
+        <div className="productos" onClick={(e)=>console.log(e)}>
             <h1 className="titulo">{props.title}</h1>
              <ItemList productos={products} />   
         </div>

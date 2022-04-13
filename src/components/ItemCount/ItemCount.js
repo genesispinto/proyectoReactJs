@@ -20,12 +20,15 @@ const ItemCount = (props) =>{
         }
         
     }
+    const handleOnAdd = () =>{
+        props.onAdd(count)
+    }
     return(
         <div className="controlesProductos">
             <button onClick={Decrement}>-</button>
             <p>{count}</p>
             <button onClick={Increment}>+</button>
-            <button className="agregaCarrito" onClick={()=>props.onAdd(count)}>Agregar a Carrito</button>
+            <button className="agregaCarrito" onClick={handleOnAdd}>Agregar a Carrito</button>
             <p className="stock">STOCK: {stock}</p>
         </div>
     )

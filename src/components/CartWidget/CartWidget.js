@@ -1,8 +1,5 @@
-import imagenCarro from "./carrito.png"
-import NavBar from "../NavBar/NavBar";
-// const divStyle = {
-//     width: 50,
-//   };
+import imagenCarro from "./carrito1.png"
+import "./CartWidget.css"
 
 const CartWidget = () =>{
     return(

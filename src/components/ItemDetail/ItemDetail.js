@@ -1,27 +1,31 @@
 import ItemCount from "../ItemCount/ItemCount"
-import {useState} from "react"
+import {useState , useContext} from "react"
+import { cartContext } from "../context/cartContext"
 import "../ItemDetail/ItemDetail.css"
 import { Link } from "react-router-dom"
 
-const ItemDetail = ({pictureUrl, title, description}) =>{
-    const [count, setCount]= useState()
-    const [typeInput, setTyInput]= useState ('true') 
 
-    const handlerOnAdd = (quantity) =>{
-        setCount(quantity)
+
+const ItemDetail = ({pictureUrl, title, description, id, price}) =>{
+    const [typeInput, setTyInput]= useState ('true') 
+    const {AddItem} = useContext(cartContext) 
+
+    const HandlerOnAdd = (count) =>{
         setTyInput(!typeInput)
-    
-       }
+        
+        const productToAdd ={
+            id, title, price, count
+        }
+        AddItem(productToAdd)
+    }
     return(
         <div className="itemDetail">
             <img src={pictureUrl} alt={title} className="imgDetail"/>
-            { typeInput ? <ItemCount stock1= {10} initial = {0} onAdd= {handlerOnAdd} className="itemCount"/> :<Link to="/cart/finalizarCompra" className="btn1"> Terminar compra</Link>} 
+            { typeInput ? <ItemCount stock1= {10} initial = {0} onAdd= {HandlerOnAdd} className="itemCount"/> :<Link to="/cart" className="btn1"> Terminar compra</Link>} 
             <div className="detalle">
                 <h1 className="nombreProducto">{title}</h1> <br/>
                 <p className="descriptionProducto">{description}</p>
             </div>
-           {/* { swal(`Se agregaron al carrito : ${count} unidades`)} */}
-           <p>Se agregaron al carrito : {count} unidades</p>
         </div>
     )
 }

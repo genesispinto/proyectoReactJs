@@ -21,7 +21,7 @@ const ItemCount = (props) =>{
         
     }
     const handleOnAdd = () =>{
-        props.onAdd(count)
+        if(count>0) props.onAdd(count)
     }
     return(
         <div className="controlesProductos">

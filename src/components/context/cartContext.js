@@ -9,17 +9,20 @@ export const CartContextProvider = ({children})=>{
     let count =0
 
     const AddItem =(productToAdd)=>{
-        const cart1 = cart.concat(productToAdd)
 
-        if (cart.some(prod => prod.id === productToAdd.id)) {
-            cart1.pop()
-            Swal.fire({
-                title: "Error",
-                text:`Producto ya fue agregado al carrito`, 
-                icon: "error",
-                timer: "1500",})
+        
+
+        if (isInCart(productToAdd)) 
+        {
+            cart.forEach(e => { 
+                    if(e.id===productToAdd.id){
+                    e.count = e.count + productToAdd.count}
+            })     
+            cart.forEach(prod => {count += prod.count})
+            setcontador(count)
         }
             else{
+                const cart1 = cart.concat(productToAdd)
                 setCart(cart1)
                 cart1.forEach(prod => {count += prod.count})
                 setcontador(count)
@@ -31,8 +34,25 @@ export const CartContextProvider = ({children})=>{
                 } 
     }
 
+    const isInCart = (productToAdd) =>{
+        return(cart.some(prod => prod.id === productToAdd.id))
+    }
+    const clear = () =>{
+        console.log('entre a clear')
+        const clearCart = []
+            setCart(clearCart)
+            setcontador(0)
+    }
+    const removeItem = (id) =>{
+        let count1 = 0
+        const newCart= cart.filter(prod => prod.id !== id)
+        setCart(newCart)
+        newCart.forEach(prod => {count1 += prod.count})
+        setcontador(count1)
+    }
+
     return(
-        <cartContext.Provider value={{AddItem, contador}}>
+        <cartContext.Provider value={{AddItem, contador, clear, removeItem, cart}}>
             {children}
         </cartContext.Provider>
     )

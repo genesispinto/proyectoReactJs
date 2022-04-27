@@ -10,8 +10,6 @@ export const CartContextProvider = ({children})=>{
 
     const AddItem =(productToAdd)=>{
 
-        
-
         if (isInCart(productToAdd)) 
         {
             cart.forEach(e => { 

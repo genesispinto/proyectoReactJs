@@ -17,10 +17,12 @@ const Cart = () =>{
             <Link to="/"> Ir al inicio</Link>
         </div>
     )
+
     const  componente2=(
         <div className="cart">
         {cart.map(prod => <CartItem key={prod.id} {...prod}/>)}
-        {cart.map(prod => {total += prod.count*prod.price})} 
+        {cart.forEach(prod => {total += prod.count*prod.price})}
+
             <div className="total">
                 <p> Total compra: ${total.toLocaleString('de-DE')}</p>
                 <button className="css-button-sliding-to-top--green" onClick={clear}>Limpiar Carrito</button>

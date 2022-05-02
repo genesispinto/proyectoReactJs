@@ -11,16 +11,12 @@ const ItemDetailContainer = () =>{
     const [productsById, setProductsById]= useState({});
     
     useEffect (()=>{
-        // getProductsById(productId).then(prods => {
-        //     setProductsById(prods)
-        //     console.log(prods)
-        // })
         getDoc(doc(firestoredb, 'products', productId)).then(Response =>{
             console.log(Response)
             const product ={id: Response.id , ...Response.data()}
             setProductsById(product)
         })
-    }, [])
+    }, [productId])
 
     return( 
         <div>

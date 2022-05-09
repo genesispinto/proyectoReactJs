@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+Bienvenidos a mi PetShop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este sitio se ofrece al publico productos para el cuidado e higiene de mascotas, utilizando una base de datos creada en firebase
+------------------------------------------------------------------------------
+**Instalacion y archivo .env** 
 
-## Available Scripts
+Este proyecto esta realizado utilizando ReactJs por lo cual se instala utilizando el comando:
+-npm install- 
+y para levantar el proyecto se utiliza:
+-npm start- 
 
-In the project directory, you can run:
+Tambien es necesario crear un archivo .env en el cual se van a guardar las credenciales emitidas por firebass con este formato:
 
-### `npm start`
+REACT_APP_apiKey= apiKey
+REACT_APP_authDomain= authDomain
+REACT_APP_projectId= projectId
+REACT_APP_storageBucket= storageBucket
+REACT_APP_messagingSenderId= messagingSenderId
+REACT_APP_appId= appId
+-------------------------------------------------------------------------------
+**Formato en firebase del producto:**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Existen dos colecciones:
+1. coleccion 'products': Contiene la informacion de cada producto, para llenarla se deben agregar los siguientes campos
+    -id: Generado directamente desde firebase
+    -categoryId: Este campo debe identificar categoria del producto. Ejemplo: 'perros' o 'gatos'
+    -description: Este campo contiene una descripcion del producto
+    -pictureUrl: La imagen del producto 
+    -price: Precio
+    -stock: Unidades disponibles
+    -title: Nombre del producto
+2. coleccion 'category': Contiene las categorias de los productos que se mostraran en la ruta, para llenarla se deben agregar los siguientes campos:
+    -id: categoria de los productos
+    - description: mismo nombre de categorias 
+    **Ejemplo** id: 'perros' description: 'perros
+---------------------------------------------------------------------------------
+**Componentes del proyecto**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **NavBar** Se traen las categorias desde firebase de la coleccion Category y se crean los links con todas estas para tener una barra de navegacion; tambien se incluye el CarWidget y una imagen representativa de la marca.
+2. **CarWidget** Componente en el cual se puede visualizar la imagen del carrito y el nro de productos que estan en el siemmpre y cuando este numero sea mayor que cero.
+3. **ItemListContainer** Componente que se encarga de hacer la peticion de la informacion de los productos a firebase y enviarlas al componente ItemList
+4. **ItemList** Componente que renderiza los productos y los envia a componente Item
+5. **Item** Componente que muestra la tarjeta de cada producto, mostrando su imagen, el nombre y un boton con un link que envia al usuario al detalle de el producto.
+6. **ItemDetailContainer** Componente que hace una nueva consulta a firebase para buscar el producto clickeado por el usuario y enviarlo al componente ItemDetail
+7. **ItemDetail** Recibe la informacion del producto y lo muestra con el detalle correspondiente a este, permite al usurio colocar las unidades que necesita del producto y agregarlas al carrito
+8. **ItemCount** Se encarga de incrementar o decrementar el valor de los productos que el usuario este manipulando.
+9. **Cart** Componente que recorre el carrito y envia contenido a CartItem, de no tener ningun producto muestra un link para ir al inicio, tambien contiene un boton para limpiar el carrito y uno para seguir al siguiente paso de la compra
+10. **CartItem** Componente que se encarga de mostrar cada producto que esta en el corrito con una breve descripcion de los datos mas importantes de este. Tambien tiene un boton que permite eliminar el producto del carro
+11. **BuyerData** Componente que por medio de un formulario pide al usuario los datos sus datos.
+12. **Order** Genera numero de orden de compra, graba en firebase en la colleccion Orden los datos de la compra y devuelve al usuario el codigo de la transaccion.
+13. **CartContext** Se utiliza para almacenar funciones o datos que puedan ser ocupados por todos los componentes.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

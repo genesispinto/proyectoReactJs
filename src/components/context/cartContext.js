@@ -37,7 +37,6 @@ export const CartContextProvider = ({children})=>{
         return(cart.some(prod => prod.id === productToAdd.id))
     }
     const clear = () =>{
-        console.log('entre a clear')
         const clearCart = []
             setCart(clearCart)
             setcontador(0)

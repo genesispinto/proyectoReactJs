@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import {getFirestore} from "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBQpu8Pg_aOkVudCXejjLRTY6gsHSXKlt0",
-  authDomain: "ecommercepetshop-6a090.firebaseapp.com",
-  projectId: "ecommercepetshop-6a090",
-  storageBucket: "ecommercepetshop-6a090.appspot.com",
-  messagingSenderId: "980713720969",
-  appId: "1:980713720969:web:299e8092877749f7cf4a58"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
 };
 
 const app = initializeApp(firebaseConfig);

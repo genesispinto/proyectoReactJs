@@ -26,13 +26,13 @@ const Cart = () =>{
             <div className="total">
                 <p> Total compra: ${total.toLocaleString('de-DE')}</p>
                 <button className="css-button-sliding-to-top--green" onClick={clear}>Limpiar Carrito</button>
-                <Link to={`/datos-buyer/total=${total}`} className="css-button-sliding-to-top--green" > Terminar Compra</Link>
+                <Link to={`/datos-buyer/total=${total}`} className="css-button-sliding-to-top--green" > Seguir con la compra</Link>
             </div>
         </div>
     )
   
     return ((cart.length === 0) ? componente1 : componente2)
-   
+
 }
 
 export default Cart

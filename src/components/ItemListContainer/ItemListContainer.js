@@ -1,6 +1,5 @@
 import {useState, useEffect} from "react";
 import "./ItemListContainer.css";
-// import { getProducts } from "../productos";
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { firestoredb } from "../services/firebase";
 import ItemList from "../ItemList/ItemList";
@@ -22,7 +21,6 @@ const ItemListContainer = (props)=>{
                  
             })
             setProducts(products)
-            console.log(products)
             })
         }, [categoryId]) 
         

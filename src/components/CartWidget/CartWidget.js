@@ -6,7 +6,6 @@ import { Link } from "react-router-dom"
 
 const CartWidget = () =>{
     const {contador} = useContext(cartContext)
-    console.log(contador)
     return(
         <div id="carro">
        <Link to={"/cart"}><img src={imagenCarro} id="ImagenCarro" alt="logo"></img></Link> 

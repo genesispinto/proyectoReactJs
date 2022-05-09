@@ -7,9 +7,9 @@ import "../Order/Order.css"
 
 
 const Orden = ()=>{
-    const {buyer} = useContext(cartContext)
+    const {buyer, clear} = useContext(cartContext)
     const [id, setId]= useState()
-    console.log(buyer)
+    const [ident, setIdent]= useState('true')
     
 const createOrder = ()=>{
  const batch = writeBatch(firestoredb)
@@ -17,7 +17,7 @@ const createOrder = ()=>{
  const ids = buyer.items.map(prod => prod.id)
  const collectionRef = collection(firestoredb, 'products')
  const outOfStock = []
-
+ 
 
  getDocs(query(collectionRef), where(documentId(), 'in', ids)) .then(Response =>{
      Response.docs.forEach(doc =>{
@@ -36,7 +36,8 @@ const createOrder = ()=>{
         addDoc(collectionRef, buyer).then(docRef => {
             const idCompra= docRef.id
             setId(idCompra)
-            console.log(`el id de la orden es : ${docRef.id}`)
+            clear()
+            setIdent(!ident)
             batch.commit()
         })
      } else{
@@ -56,7 +57,7 @@ const createOrder = ()=>{
                 <p>Total de la compra :  {buyer.Total}</p>    
                 <p> Id de compra:    {id}</p>
             </div>    
-            <button onClick={()=> createOrder()}>Generar Orden</button>
+            {ident ? <button onClick={()=> createOrder()}>Generar Orden</button>: null}
         </div>
         
     )

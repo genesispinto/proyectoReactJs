@@ -3,7 +3,6 @@ import imagen from "./img1.png"
 import CartWidget from "../CartWidget/CartWidget"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-// import { getCategories } from "../productos"
 import { firestoredb } from "../services/firebase"
 import { getDocs, collection, doc} from "firebase/firestore";
 
@@ -11,10 +10,6 @@ const NavBar = () => {
 const [categories, setCategories] = useState([])
 
 useEffect(()=>{
-    // getCategories().then(categories => {
-    //     setCategories(categories)
-    // })
-
     getDocs(collection(firestoredb, 'categories')).then(Response =>{
         const categories = Response.docs.map(doc =>{
             return{id: doc.id, ...doc.data()}
